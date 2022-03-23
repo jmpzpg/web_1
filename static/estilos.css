@@ -1,0 +1,39 @@
+html{
+    background-color: white;
+}
+body {
+    background-color: burlywood;
+    text-align: center;
+    width: 80%;
+    /* margin: auto; */
+}
+main{
+    width: 80%;
+    background-color: blueviolet;
+    margin: auto;
+}
+header, footer {
+
+    background-color:blue;
+    color:aquamarine;
+    font-size: x-large;
+    text-align: center;
+    padding: 2%;
+}
+nav ul{
+    list-style: none;
+}
+nav ul li{
+    display: inline-block;
+    
+}
+nav ul li a{
+    color: white;
+}
+.padre{
+    /* margin-bottom: 3%; */
+}
+div table{
+    margin: auto;
+    background-color: cyan;
+}
