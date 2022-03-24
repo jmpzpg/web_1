@@ -1,16 +1,18 @@
 html{
     background-color: white;
+    
 }
 body {
     background-color: burlywood;
-    text-align: center;
+    
     width: 80%;
-    /* margin: auto; */
+    margin: 0 auto;
 }
 main{
     width: 80%;
     background-color: blueviolet;
-    margin: auto;
+    
+    padding-bottom: 3%;
 }
 header, footer {
 
@@ -31,7 +33,7 @@ nav ul li a{
     color: white;
 }
 .padre{
-    /* margin-bottom: 3%; */
+    margin-bottom: 3%;
 }
 div table{
     margin: auto;

@@ -20,5 +20,28 @@
                 </tr>
             {% endfor %}
         </table>
+
+        <select name="" id="">
+            {% for fila in datos %}
+            <option value="{{fila[1]}}">{{fila[0]}}</option>
+            {% endfor %}
+        </select>
+
+        <select name="" id="">
+            {% for fila in datos %}
+            <option value="{{fila[1]}}" {% if fila[1] == 3 %} selected="selected"{% endif %}>{{fila[0]}}</option>
+            {% endfor %}
+        </select>
+
+        <p>
+            {% for fila in datos %}
+                <input type="radio" id="dato_{{fila[1]}}" name="daigual" value="{{fila[1]}}">
+                <label for="dato_{{fila[1]}}">{{fila[0]}}</label>
+            {% endfor %}
+            
+            
+        </p>
+
+
     </div>
 {% endblock %}

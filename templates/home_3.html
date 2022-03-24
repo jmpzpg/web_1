@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+    <h1>Hola Mundo de las plantillas</h1>
+    <div class="padre">
+        <table>
+            <tr>
+                <th>Nombre: </th>
+                <th>Numero: </th>
+                <th>Dia: </th>
+            </tr>
+            {% for fila in datos %}
+                <tr>
+                    <td>{{fila[0]}}</td>
+                    <td>{{fila[1]}}</td>
+                    <td>{{fila[2]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <select name="Prueba Lista desplegable" id="">
+            <option value="1">{{datos[0].[0]}}</option>
+            <option value="2">{{datos[1].[0]}}</option>
+            <option value="3">{{datos[2].[0]}}</option>
+            
+        </select>
+
+    </div>
+{% endblock %}
