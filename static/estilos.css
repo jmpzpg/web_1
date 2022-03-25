@@ -10,13 +10,13 @@ body {
 }
 main{
     width: 80%;
-    background-color: blueviolet;
+    background-color: rgb(226, 226, 206);
     
     padding-bottom: 3%;
 }
 header, footer {
 
-    background-color:blue;
+    background-color:rgb(96, 96, 201);
     color:aquamarine;
     font-size: x-large;
     text-align: center;

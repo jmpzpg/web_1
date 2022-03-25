@@ -8,15 +8,17 @@
     <div class="padre">
         <table>
             <tr>
+                <th>ID: </th>
                 <th>Nombre: </th>
-                <th>Numero: </th>
-                <th>Dia: </th>
+                <th>Apellidos: </th>
+                <th>DNI: </th>
             </tr>
             {% for fila in datos %}
                 <tr>
                     <td>{{fila[0]}}</td>
                     <td>{{fila[1]}}</td>
                     <td>{{fila[2]}}</td>
+                    <td>{{fila[3]}}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -36,12 +38,17 @@
         <p>
             {% for fila in datos %}
                 <input type="radio" id="dato_{{fila[1]}}" name="daigual" value="{{fila[1]}}">
-                <label for="dato_{{fila[1]}}">{{fila[0]}}</label>
+                <label for="dato_{{fila[1]}}">{{fila[0]}}</label><br/>
             {% endfor %}
             
             
         </p>
-
+        <p>
+            {% for fila in datos %}
+                <input type="checkbox" name="persona{{fila[1]}}" value="{{fila[1]}}">
+                <label for="persona{{fila[1]}}">{{fila[0]}}</label><br/>
+            {% endfor %}
+        </p>
 
     </div>
 {% endblock %}
