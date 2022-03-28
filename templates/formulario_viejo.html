@@ -49,12 +49,6 @@
     <input type="text" id="apellidos" name="apellidos" value="{% if datos %}{{datos[2]}} {% endif %}"><br/>
     <label for="dni">DNI</label>
     <input type="text" id="dni" name="dni" value="{% if datos %}{{datos[3]}} {% endif %}"><br/>
-    <label for="ocupacion">Ocupacion</label>
-    <select id="ocupacion" name="ocupacion"><br/>
-        <option value="-1">seleccione ocupacion</option>
-        {% for o in ocupaciones %}
-         <option value="{{o[0]}}">{{o[1]}}</option>
-        {% endfor %}
 
     <hr>
     <input type="submit"><br/>

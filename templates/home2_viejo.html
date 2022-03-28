@@ -12,7 +12,6 @@
                 <th>Nombre: </th>
                 <th>Apellidos: </th>
                 <th>DNI: </th>
-                <th>Ocupacion: </th>
             </tr>
             {% for fila in datos %}
                 <tr>
@@ -20,7 +19,6 @@
                     <td>{{fila[1]}}</td>
                     <td>{{fila[2]}}</td>
                     <td>{{fila[3]}}</td>
-                    <td>{{fila[4]}}</td>
                     <td><a href="/editar/{{fila[0]}}">Editar</a></td>
                     <td><a href="/borrar/{{fila[0]}}">Borrar</a></td>
                 </tr>
