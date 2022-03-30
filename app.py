@@ -17,11 +17,12 @@ def server_static(filename):
 def hola():
     # return {'datos':[('Teo', 1, 'lunes'),('Jose', 2,'Martes'),('Pau',3 , 'Jueves')]}
 
-    cons_vista_datos_servidor = 'select id, nombre, apellidos, dni, id_ocupacion from persona'
-
+    cons_vista_datos_servidor = 'select p.id, p.nombre, p.apellidos, p.dni, t.descripcion from persona p left join T_ocupacion t on p.id_ocupacion = t.id'
+    # consulta_ver_descripcio_ocupacion = f'select descripcion from T_ocupacion where id = {id_ocu}'
     cnx = sqlite3.connect(BASE_DATOS)
     cursor = cnx.execute(cons_vista_datos_servidor)
     filas = cursor.fetchall()
+    
     cnx.close()
     return {'datos':filas}
 
@@ -31,6 +32,7 @@ def hola():
 def mi_form(id=None):
     cnx = sqlite3.connect(BASE_DATOS)
     consulta_ocupaciones = "select * from T_ocupacion"
+    
     cursor = cnx.execute(consulta_ocupaciones)
     lista_ocupaciones = cursor.fetchall()
 
@@ -38,16 +40,15 @@ def mi_form(id=None):
         return {'ocupaciones':lista_ocupaciones}
     else:
         cons_update_datos_servidor = 'select id, nombre, apellidos, dni, id_ocupacion from persona where id=?'
-
         
         cursor = cnx.execute(cons_update_datos_servidor, (id,))
         filas = cursor.fetchone()
-
         
-
+        
     cnx.close()
        
     return {'datos':filas, 'ocupaciones':lista_ocupaciones}
+    
 
 @route('/guardar', method='POST')
 def guardar():

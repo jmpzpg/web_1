@@ -53,14 +53,18 @@
     <select id="ocupacion" name="ocupacion"><br/>
         <option value="-1">seleccione ocupacion</option>
         {% for o in ocupaciones %}
-         <option value="{{o[0]}}">{{o[1]}}</option>
+         <option value="{{o[0]}}" {% if datos and (datos[4]) == o[0] %} selected {% endif %}>{{o[1]}}</option>
         {% endfor %}
-
+    
+    
+        <br/>
     <hr>
-    <input type="submit"><br/>
+    <br/>
+    
 </form>  
+
     
     <hr>
-
+    <input type="submit"><br/>
 {% endblock %}
 
