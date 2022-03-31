@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modelo de pagina para el experimento de programacion</title>
+    <style>
+        body {width: 60%; background-color: beige; border: 2px blue solid; margin: 0 auto;}
+        td , th {border: 2px red solid; padding: 8px;}
+        #padre {padding: 30px;}
+        table {margin: 0 auto; border-collapse: collapse;}
+        form {margin:0 auto; width: 90%; padding: 1em; border: 1px solid #CCC; border-radius: 1em;}
+        ul {list-style: none;}
+        ul li {margin-top: 1em;}
+        label {display: inline-block; }
+        
+    </style>
+</head>
+<body>
+    <div id="padre">
+        <table>
+            <tr>
+                <th>columna 1</th>
+                <th>columna 2</th>
+                <th>columna 3</th>
+            </tr>
+            <tr>
+                <td>celda 11</td>
+                <td>celda 12</td>
+                <td>celda 13</td>
+            </tr>
+            <tr>
+                <td>celda 21</td>
+                <td>celda 22</td>
+                <td>celda 23</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <form action="/guardar" method="get">
+            <h2>Datos personales:</h2>
+            <ul>
+                <li>
+                    <label for="lab_nombre">Nombre: </label>
+                    <input type="text" id="lab_nombre" name="user_fname" value="introducir nombre">
+                </li>
+                <li>
+                    <label for="lab_apellidos">Apellidos: </label>
+                    <input type="text" id="lab_apellidos" name="user_lname" value="introducir apellidos">
+                </li>
+                <li>
+                    <label for="lab_dni">DNI: </label>
+                    <input type="text" id="labdni" name="user_dni" value="introducir dni">
+                </li>
+                <li>
+                    <label for="lab_ocupacion">Ocupacion: </label>
+                    <select id="lab_ocupacion" name="user_ocupacion">
+                        <option value="-1">seleccione ocupacion</option>
+                        <option value="1">Primera opción</option>
+                        <option value="2">Segunda opción</option>
+                </li>
+
+            </ul>
+            
+            <div>
+                <h2>Números:</h2>
+            
+                <label for="lab_numero1">Uno
+                <input type="radio" id="lab_numero1" name="number" value="1"></label>
+            
+           
+                <label for="lab_numero2">Dos
+                <input type="radio" id="lab_numero2" name="number" value="2"></label>
+            
+           
+                <label for="lab_numero3">Tres
+                <input type="radio" id="lab_numero3" name="number" value="3"></label><br/>
+            </div>
+           
+            <div>
+                <input type="submit">
+            </div>
+            
+            
+        </form>  
+
+    </div>
+</body>
+</html>
