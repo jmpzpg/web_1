@@ -60,11 +60,21 @@
         <br/>
     <hr>
     <br/>
-    
+    <p>
+    <hr>
+    <h2>NÚMEROS:</h2>
+    {% for num in numeros %}
+    <input type="radio" id="dato{{num[0]}}" name="daigual" value="{{num[0]}}">
+    <label for="dato{{num[0]}}">{{num[1]}}</label><br/>
+    {% endfor %}
+    </p>
+    <hr>
+
+    <input type="submit"><br/>
 </form>  
 
     
     <hr>
-    <input type="submit"><br/>
+    
 {% endblock %}
 

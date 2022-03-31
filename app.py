@@ -17,7 +17,7 @@ def server_static(filename):
 def hola():
     # return {'datos':[('Teo', 1, 'lunes'),('Jose', 2,'Martes'),('Pau',3 , 'Jueves')]}
 
-    cons_vista_datos_servidor = 'select p.id, p.nombre, p.apellidos, p.dni, t.descripcion from persona p left join T_ocupacion t on p.id_ocupacion = t.id'
+    cons_vista_datos_servidor = 'select p.id, p.nombre, p.apellidos, p.dni, t.descripcion, n.descripcion from persona p left join T_ocupacion t on p.id_ocupacion = t.id left join T_numero n on n.id =p.id_numero '
     # consulta_ver_descripcio_ocupacion = f'select descripcion from T_ocupacion where id = {id_ocu}'
     cnx = sqlite3.connect(BASE_DATOS)
     cursor = cnx.execute(cons_vista_datos_servidor)
@@ -36,9 +36,14 @@ def mi_form(id=None):
     cursor = cnx.execute(consulta_ocupaciones)
     lista_ocupaciones = cursor.fetchall()
 
-    if id is None:
-        return {'ocupaciones':lista_ocupaciones}
-    else:
+    # Bloque de números:
+    consulta_numeros = "select * from T_numero"
+    cursor = cnx.execute(consulta_numeros)
+    lista_numeros = cursor.fetchall()
+
+    if id is None: # es un ALTA
+        return {'ocupaciones':lista_ocupaciones, 'numeros':lista_numeros}
+    else: 
         cons_update_datos_servidor = 'select id, nombre, apellidos, dni, id_ocupacion from persona where id=?'
         
         cursor = cnx.execute(cons_update_datos_servidor, (id,))
@@ -47,7 +52,7 @@ def mi_form(id=None):
         
     cnx.close()
        
-    return {'datos':filas, 'ocupaciones':lista_ocupaciones}
+    return {'datos':filas, 'ocupaciones':lista_ocupaciones, 'numeros':lista_numeros}
     
 
 @route('/guardar', method='POST')
@@ -65,16 +70,17 @@ def guardar():
     dni = request.POST.dni
     id = request.POST.id
     ocupacion = request.POST.ocupacion
+    numero = request.POST.daigual
 
     cnx = sqlite3.connect(BASE_DATOS)
     
     
     if id == '': # Alta
-        cons_insercion_datos_servidor = 'insert into persona (nombre, apellidos, dni, id_ocupacion) values (?,?,?,?)'
-        cnx.execute(cons_insercion_datos_servidor, (nombre,apellidos,dni,ocupacion))    
+        cons_insercion_datos_servidor = 'insert into persona (nombre, apellidos, dni, id_ocupacion, id_numero) values (?,?,?,?,?)'
+        cnx.execute(cons_insercion_datos_servidor, (nombre,apellidos,dni,ocupacion,numero))    
     else:   # Actualizacion
-        consulta = "update persona set nombre=?, apellidos=?, dni=? , id_ocupacion=? where id=?"
-        cnx.execute(consulta, (nombre,apellidos,dni,ocupacion,id))
+        consulta = "update persona set nombre=?, apellidos=?, dni=? , id_ocupacion=? , id_numero=? where id=?"
+        cnx.execute(consulta, (nombre,apellidos,dni,ocupacion,numero))
     cnx.commit()
     cnx.close()
 

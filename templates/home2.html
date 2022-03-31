@@ -13,6 +13,7 @@
                 <th>Apellidos: </th>
                 <th>DNI: </th>
                 <th>Ocupacion: </th>
+                <th>Numero: </th>
             </tr>
             {% for fila in datos %}
                 <tr>
@@ -21,13 +22,14 @@
                     <td>{{fila[2]}}</td>
                     <td>{{fila[3]}}</td>
                     <td>{{fila[4]}}</td>
+                    <td>{{fila[5]}}</td>
                     <td><a href="/editar/{{fila[0]}}">Editar</a></td>
                     <td><a href="/borrar/{{fila[0]}}">Borrar</a></td>
                 </tr>
             {% endfor %}
         </table>
         <hr>
-        <select name="" id="">
+        <!-- <select name="" id="">
             {% for fila in datos %}
             <option value="{{fila[1]}}">{{fila[0]}}</option>
             {% endfor %}
@@ -52,7 +54,7 @@
                 <input type="checkbox" name="persona{{fila[1]}}" value="{{fila[1]}}">
                 <label for="persona{{fila[1]}}">{{fila[0]}}</label><br/>
             {% endfor %}
-        </p>
+        </p> -->
 
     </div>
 {% endblock %}
