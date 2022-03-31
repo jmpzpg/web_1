@@ -1,2 +1,2 @@
-# web_projects_w_bottle
-Primeras web en el tercer trimestre. Con python y bottle
+# web_1
+Primera versión de la primera web del tercer trimestre. Con python y bottle
