@@ -68,6 +68,17 @@
     <label for="dato{{num[0]}}">{{num[1]}}</label><br/>
     {% endfor %}
     </p>
+    <hr><br>
+
+    <p>
+        <hr>
+        <h2>VEHÍCULOS:</h2>
+        {% for v in vehiculos %}
+        <input type="checkbox" id="vh{{v[0]}}" name="vehiculo" value="{{v[0]}}">
+        <label for="vh{{v[0]}}">{{v[1]}}</label><br/>
+        {% endfor %}
+        </p>
+
     <hr>
 
     <input type="submit"><br/>
