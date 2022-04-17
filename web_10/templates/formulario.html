@@ -5,87 +5,53 @@
 {% block content %}
 
 
-<!-- <form action="/guardar" method="post">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="fname"><br/>
-    <label for="lname">Last name</label>
-    <input type="text" id="lname" name="lname"><br/>
-   
-    
-    <hr>
-    <label for="cars">Choose a car:</label>
-
-    <select id="cars" name="cars">
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="opel">Opel</option>
-      <option value="audi">Audi</option>
-    </select> 
-    <hr>
-    <input type="radio" id="dato1" name="daigual" value="1">
-    <label for="dato1">Uno</label><br/>
-    <input type="radio" id="dato2" name="daigual" value="2">
-    <label for="dato2">Dos</label><br/>
-    <input type="radio" id="dato3" name="daigual" value="3">
-    <label for="dato3">Tres</label><br/>
-    <hr>
-    <input type="checkbox" id="vehicle1" name="vehicle" value="Bike">
-    <label for="vehicle1"> I have a bike</label><br>
-    <input type="checkbox" id="vehicle2" name="vehicle" value="Car">
-    <label for="vehicle2"> I have a car</label><br>
-    <input type="checkbox" id="vehicle3" name="vehicle" value="Boat">
-    <label for="vehicle3"> I have a boat</label><br> 
-
-    <hr>
-    <input type="submit"><br/>
-</form> -->
-
-<form action="/guardar" method="post">
+<form action="/guardar" method="post">  <!-- si existen datos es una actiualización, entonces hay que rellenar los campos del formulario
+ -->
     <h2>Datos personales:</h2>
-    <input type="hidden" id="id" name="id" value="{% if datos %}{{datos[0]}} {% endif %}">
+    <input type="hidden" id="id" name="f_id" value="{% if datos %}{{datos[0]}} {% endif %}">    <!-- datos[0] es el id de la tabla persona -->
+    
     <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" name="nombre" value="{% if datos %}{{datos[1]}} {% endif %}"><br/>
+    <input type="text" id="nombre" name="f_nombre" value="{% if datos %}{{datos[1]}} {% endif %}"><br/>
+    
     <label for="apellidos">Apellidos</label>
-    <input type="text" id="apellidos" name="apellidos" value="{% if datos %}{{datos[2]}} {% endif %}"><br/>
+    <input type="text" id="apellidos" name="f_apellidos" value="{% if datos %}{{datos[2]}} {% endif %}"><br/>
+    
     <label for="dni">DNI</label>
-    <input type="text" id="dni" name="dni" value="{% if datos %}{{datos[3]}} {% endif %}"><br/>
+    <input type="text" id="dni" name="f_dni" value="{% if datos %}{{datos[3]}} {% endif %}"><br/>
+    
     <label for="ocupacion">Ocupacion</label>
-    <select id="ocupacion" name="ocupacion"><br/>
+    <select id="ocupacion" name="f_ocupacion"><br/>
         <option value="-1">seleccione ocupacion</option>
-        {% for o in ocupaciones %}
-         <option value="{{o[0]}}" {% if datos and (datos[4]) == o[0] %} selected {% endif %}>{{o[1]}}</option>
+        {% for ocup in ocupaciones %}       <!-- en ocupaciones tenemos todas las ocupaciones que existen en la tabla T de la BD -->
+            <option value="{{ocup[0]}}" {% if datos and (datos[4]) == ocup[0] %} selected {% endif %}>{{ocup[1]}}</option>
         {% endfor %}
-    
-    
         <br/>
-    <hr>
-    <br/>
-    <p>
-    <hr>
-    <h2>NÚMEROS:</h2>
-    {% for num in numeros %}
-    <input type="radio" id="dato{{num[0]}}" name="daigual" value="{{num[0]}}">
-    <label for="dato{{num[0]}}">{{num[1]}}</label><br/>
-    {% endfor %}
-    </p>
-    <hr><br>
+    </select>
 
-    <p>
+    <p>     <!-- pinta en el formulario los campos para seleccionar el número, de entre las opciones -->
+        <hr>
+        <h2>NÚMEROS:</h2>
+        {% for num in numeros %}        <!-- en numeros tenemos todos los números que existen en la tabla T de la BD -->
+            <label for="dato{{num[0]}}">{{num[1]}}</label>
+            <input type="radio" id="dato{{num[0]}}" name="f_numero" value="{{num[0]}}" {% if datos and (datos[5]) == num[0] %} checked {% endif %} ><br/>
+        {% endfor %}
+    </p>
+
+    <p>     <!-- pinta en el formulario los campos para seleccionar los vehículos  -->
         <hr>
         <h2>VEHÍCULOS:</h2>
-        {% for v in vehiculos %}
-        <input type="checkbox" id="vh{{v[0]}}" name="vehiculo" value="{{v[0]}}">
-        <label for="vh{{v[0]}}">{{v[1]}}</label><br/>
+        {% for v in vehiculos %}        <!-- en vehiculos tenemos todos los vehículos que existen en la tabla T de la BD -->
+            <label for="vh{{v[0]}}">{{v[1]}}</label>
+            <input type="checkbox" id="vh{{v[0]}}" name="f_vehiculo" value="{{v[0]}}" 
+            {% if datos and listado_vehiculos and (listado_vehiculos[0]) == v[0] %} checked {% endif %}>  <br/>
         {% endfor %}
-        </p>
+    </p>
 
     <hr>
 
     <input type="submit"><br/>
 </form>  
 
-    
-    <hr>
     
 {% endblock %}
 
