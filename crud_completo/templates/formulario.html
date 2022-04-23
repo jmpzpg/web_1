@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{%block title%}Edición{%endblock%}
+
+{%block cabecera%}
+    {% if row %}
+        <h2>Actualiza los datos del artículo</h2>
+    {%else%}
+        <h2>Nuevo artículo</h2>
+    {%endif%}
+{%endblock%}
+
+{%block content%}
+
+    <form action="/save" method="POST">
+    		<input type="hidden" name="id" value="{% if row %}{{row[0]}}{%endif%}" />
+			<label>Código:
+				<input type="text" name="codigo" value="{% if row %} {{row[1]}}{%endif%}"  />
+			</label><br>
+			<label>Descripción:
+				<input type="text" name="descripcion" value="{% if row %} {{row[2]}}{%endif%}"/>
+			</label><br>
+			<label>Precio:
+				<input type="float" name="precio" value="{% if row %} {{row[3]}}{%endif%}"/>
+			</label><br>
+			<button type="submit" value="Save">Enviar datos</button>
+		</form>
+		<p><a href="/">Regresar a listado</a></p>
+{%endblock%}

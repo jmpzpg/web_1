@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+{%block title%}Home{%endblock%}
+{%block cabecera%}
+<h2>SQLite + Python (Bottle)</h2>
+{%endblock%}
+
+{%block content%}
+
+
+<p><a href="/ins">Añadir nuevo artículo</a></p>
+<p>La consulta arrojó los siguientes resultados:</p>
+<table  border="1"> 
+    <tr>
+        <th>Id</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th colspan="2">Acciones</th>
+    </tr>
+{%for row in rows%}
+  <tr>
+  {%for col in row%}
+    <td>{{col}}</td>
+  {%endfor%}
+    <td><a href="/edit/{{row[0]}}">Editar</a></td>
+    <td><a data-id="{{row[0]}}" class="del" href="/del/{{row[0]}}">Eliminar</a></td>
+  </tr>
+{%endfor%}
+</table>
+    
+
+
+{%endblock%}
